@@ -23,7 +23,7 @@
     let formData = new FormData()
     formData.append('avatar', f.avatar.files[0])
     console.dir(f.avatar);
-    axios.post('http://127.0.0.1:3000/upload', formData).then((res) => {
+    axios.post('https://my-upload-server.herokuapp.com/upload', formData).then((res) => {
       console.log(res)
       createImage(res.data.imgUrl)
     })
@@ -32,7 +32,7 @@
   function createImage(path) {
     let wrapper = document.getElementById('img-wrapper')
     let img = document.createElement('img')
-    img.src = 'http://127.0.0.1:3000/uploads/' + path
+    img.src = 'https://my-upload-server.herokuapp.com//uploads/' + path
     wrapper.appendChild(img)
   }
 

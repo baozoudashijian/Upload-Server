@@ -7,7 +7,7 @@ const path = require('path')
 const app = express()
 
 // 映射静态资源
-app.get('/index.html', function(req, res) {
+app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'))
 })
 // url发送请求使用get
