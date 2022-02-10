@@ -5,9 +5,24 @@
   <title>Upload file</title>
 </head>
 <body>
-<form action="http://127.0.0.1:3000/upload" method="post" enctype="multipart/form-data">
+<form id=f action="http://127.0.0.1:3000/upload" method="post" enctype="multipart/form-data">
   <input type="file" name="avatar">
   <input type="submit">
 </form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.25.0/axios.min.js" integrity="sha512-/Q6t3CASm04EliI1QyIDAA/nDo9R8FQ/BULoUFyN4n/BDdyIxeH7u++Z+eobdmr11gG5D/6nPFyDlnisDwhpYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+
+  f.addEventListener('submit', function(e) {
+    e.preventDefault()
+    let formData = new FormData()
+    formData.append('avatar', f.avatar.files[0])
+    console.dir(f.avatar);
+    axios.post('http://127.0.0.1:3000/upload', formData).then((res) => {
+      console.log(res)
+    })
+  })
+
+</script>
 </body>
 </html>
