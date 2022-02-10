@@ -16,7 +16,7 @@ app.get('/index.html', function(req, res) {
 app.post('/upload', upload.single('avatar'), function(req, res) {
   // 通过multer来拿到avatar, 并且会存到那个地址.
   console.log(req.file)
-  res.send('Hello World')
+  res.json({imgUrl: req.file.filename})
 })
 
 app.listen(3000, function () {

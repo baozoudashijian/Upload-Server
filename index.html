@@ -8,6 +8,9 @@
 <form id=f action="http://127.0.0.1:3000/upload" method="post" enctype="multipart/form-data">
   <input type="file" name="avatar">
   <input type="submit">
+  <div id="img-wrapper">
+
+  </div>
 </form>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.25.0/axios.min.js" integrity="sha512-/Q6t3CASm04EliI1QyIDAA/nDo9R8FQ/BULoUFyN4n/BDdyIxeH7u++Z+eobdmr11gG5D/6nPFyDlnisDwhpYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -22,8 +25,16 @@
     console.dir(f.avatar);
     axios.post('http://127.0.0.1:3000/upload', formData).then((res) => {
       console.log(res)
+      createImage(res.data.imgUrl)
     })
   })
+
+  function createImage(path) {
+    let wrapper = document.getElementById('img-wrapper')
+    let img = document.createElement('img')
+    img.src = 'http://127.0.0.1:3000/uploads/' + path
+    wrapper.appendChild(img)
+  }
 
 </script>
 </body>
