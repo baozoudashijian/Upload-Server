@@ -1,0 +1,13 @@
+{
+  "name": "Upload-Server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://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@github.com/baozoudashijian/Upload-Server.git",
+  "author": "Roger Zhang <1787009521@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "multer": "^1.4.4"
+  }
+}
