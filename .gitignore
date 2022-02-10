@@ -3,4 +3,6 @@
 /.cache
 /.vscode
 /.idea
+/uploads
 yarn-error.log
+yarn.lock
