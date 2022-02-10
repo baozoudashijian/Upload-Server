@@ -15,14 +15,15 @@ app.get('/', function(req, res) {
 // put
 app.post('/upload', upload.single('avatar'), function(req, res) {
   // 通过multer来拿到avatar, 并且会存到那个地址.
-  console.log(req.file)
   res.json({imgUrl: req.file.filename})
 })
 // 预览
 app.get('/uploads/:id', function(req, res) {
-  console.log(`/uploads/${req.params.id}`)
   res.sendFile(`/uploads/${req.params.id}`, {
-    root: __dirname // 这个参数一定要有
+    root: __dirname, // 这个参数一定要有
+    headers:{
+      'Content-Type': 'image/jpeg',
+    },
   }, (error) => {
     if(error) {
       res.status(404).send('Not found')
