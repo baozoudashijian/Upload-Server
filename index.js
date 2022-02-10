@@ -18,6 +18,17 @@ app.post('/upload', upload.single('avatar'), function(req, res) {
   console.log(req.file)
   res.json({imgUrl: req.file.filename})
 })
+// 预览
+app.get('/uploads/:id', function(req, res) {
+  console.log(`/uploads/${req.params.id}`)
+  res.sendFile(`/uploads/${req.params.id}`, {
+    root: __dirname // 这个参数一定要有
+  }, (error) => {
+    if(error) {
+      res.status(404).send('Not found')
+    }
+  })
+})
 
 app.listen(3000, function () {
   console.log('Server is running...')
